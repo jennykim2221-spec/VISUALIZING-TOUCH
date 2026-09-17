@@ -1,0 +1,2 @@
+import fs from 'node:fs';
+const p='tests/v3.spec.ts';let s=fs.readFileSync(p,'utf8');s=s.replace(" await start(page);await page.mouse.wheel(0,240);await expect(page.locator('.narrative'))"," await page.clock.install();await start(page);await page.mouse.wheel(0,240);await expect(page.locator('.narrative'))").replace(' await page.clock.install();\n','');s=s.replaceAll("page.getByRole('slider')","page.getByRole('slider',{name:'Material zoom'})");fs.writeFileSync(p,s);

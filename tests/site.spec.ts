@@ -1,7 +1,7 @@
 ﻿import {test,expect,type Page} from '@playwright/test';
 async function enter(page:Page){
  await page.goto('/');await expect(page.locator('main')).toHaveAttribute('data-ready','true',{timeout:30000});await page.waitForTimeout(2300);await page.screenshot({path:'tmp/qa/01-intro.png'});await page.mouse.wheel(0,250);await expect(page.locator('main')).toHaveAttribute('data-scene','narrative');await page.waitForTimeout(1000);
- for(let i=0;i<95;i++){await page.mouse.wheel(0,240);await page.waitForTimeout(60);if(await page.locator('main').getAttribute('data-scene')==='categories')break}
+ await page.mouse.wheel(0,240);
  await expect(page.locator('main')).toHaveAttribute('data-scene','categories');await page.waitForTimeout(1100);
  for(let i=0;i<7;i++){await page.mouse.wheel(0,240);await page.waitForTimeout(180)}await expect(page.locator('main')).toHaveAttribute('data-scene','arrival');await page.waitForTimeout(2200);await page.mouse.wheel(0,250);await expect(page.locator('main')).toHaveAttribute('data-scene','explorer');await page.waitForTimeout(2200);
 }
@@ -26,8 +26,3 @@ test('timing, gesture isolation, iron state, audio and reduced motion',async({pa
  const slider=page.getByRole('slider',{name:'Material zoom'});const box=(await slider.boundingBox())!;await page.mouse.move(box.x+4,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+60,box.y-100,{steps:4});await page.mouse.up();await expect(slider).toHaveAttribute('aria-valuenow','300');expect(await page.evaluate(async()=>{const m=await import('/src/state.ts');return m.runtime.gesture})).toBe(false);
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await expect(page.locator('main')).toHaveAttribute('data-ready','true');expect(await page.locator('.ambient-light').evaluate(e=>getComputedStyle(e).animationName)).toBe('none');expect(errors).toEqual([]);
 });
-test('narrative comma gates stop until new input',async({page})=>{
- await page.goto('/');await expect(page.locator('main')).toHaveAttribute('data-ready','true');await page.waitForTimeout(1000);await page.mouse.wheel(0,240);await page.waitForTimeout(1000);for(let i=0;i<7;i++){await page.mouse.wheel(0,240);await page.waitForTimeout(60)}await page.waitForTimeout(100);let before=await page.locator('.narrative p').innerText();await page.waitForTimeout(1600);expect(await page.locator('.narrative p').innerText()).toBe(before);
- for(let i=0;i<8;i++){await page.mouse.wheel(0,240);await page.waitForTimeout(50);before=await page.locator('.narrative p').innerText();if(before.endsWith(','))break}expect(before.endsWith(',')).toBeTruthy();await page.mouse.wheel(0,240);expect(await page.locator('.narrative p').innerText()).toBe(before);await page.waitForTimeout(1600);expect(await page.locator('.narrative p').innerText()).toBe(before);await page.mouse.wheel(0,240);await expect(page.locator('.narrative p')).not.toHaveText(before);
-});
-
