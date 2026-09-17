@@ -1,0 +1,6 @@
+import fs from 'node:fs';
+const edit=(p,fn)=>fs.writeFileSync(p,fn(fs.readFileSync(p,'utf8')));
+edit('tests/site.spec.ts',s=>s.replace('page.mouse.move(1230,650,{steps:12})','page.mouse.move(850,520,{steps:12})'));
+edit('src/components.tsx',s=>s.replaceAll('delay=700','delay=1250'));
+edit('src/App.tsx',s=>s.replaceAll('delay={450}','delay={950}').replaceAll('delay={950}/></button>','delay={1250}/></button>').replaceAll('delay={850}','delay={isFav&&settleAt.current>0?0:1250}').replace('delay={950}/></p></div>','delay={isFav&&settleAt.current>0?0:1250}/></p></div>').replace('delay={750}','delay={isFav&&settleAt.current>0?0:1250}').replaceAll('delay={isFav?0:1250}','delay={isFav&&settleAt.current>0?0:1250}'));
+edit('src/scene.ts',s=>s.replace('uniform float solid;uniform vec2 hover','uniform float solid;uniform float rearBlur;uniform vec2 hover').replace('vec4 c=texture2D(front,vUv);if(c.a<.1)discard;','vec4 c=texture2D(front,vUv);if(rearBlur>0.){vec2 b=vec2(rearBlur);c=(c*4.+texture2D(front,vUv+vec2(b.x,0.))+texture2D(front,vUv-vec2(b.x,0.))+texture2D(front,vUv+vec2(0.,b.y))+texture2D(front,vUv-vec2(0.,b.y)))/8.;}if(c.a<.1)discard;').replace('solid:{value:0},contact:','solid:{value:0},rearBlur:{value:0},contact:').replace('u.blend.value=micro;','u.blend.value=micro;u.rearBlur.value=v.scene===\'favorites\'?Math.max(0,1-opacity)*.009:0;'));

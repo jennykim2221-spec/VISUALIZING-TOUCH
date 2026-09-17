@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "cutouts": "Provided PNGs, unchanged copies",
+  "micro": "Provided AI conceptual visualizations, not measured micrographs",
+  "symbols": "Vector paths extracted from Frame 2.pdf",
+  "branding": "White outline paths extracted from design PDFs",
+  "font": "Noto Sans KR local font. Seramonde not supplied: extracted titles, Georgia fallback for live copy.",
+  "models": {
+    "kind": "procedural",
+    "generator": "MaterialModelFactory",
+    "version": 1,
+    "limitation": "Approximate reconstructed backs, thickness and silhouettes; not scans. Front-view photographic presentation blends to volumetric geometry during observation."
+  },
+  "audio": {
+    "kind": "procedural",
+    "generator": "AudioManager",
+    "version": 1,
+    "limitation": "Synthesized sound, not field recordings"
+  },
+  "materials": [
+    "shell-composite",
+    "algae-foam",
+    "citrus-paper",
+    "wheatgrass-fiber",
+    "mycelium-leather",
+    "magnetic-iron",
+    "bacterial-cellulose",
+    "mycelium-cushion"
+  ]
+}
