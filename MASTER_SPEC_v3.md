@@ -1,20 +1,21 @@
-# MASTER_SPEC.md
+# MASTER_SPEC_v3.md
 
 > VISUALIZING TOUCH — CMF 소재를 시각·청각·조작으로 체험하는 실험적 웹사이트
 >
-> 개정 2 · 2026-09-17 · 사용자 1~19번 답변 및 후속 확인 반영
+> 개정 3 · 메인 스크롤 이동·자동 소개·카테고리·연속 소재 장면·파비콘 수정 반영
 
 이 문서는 디자인·모션·소재·오디오·구현·자산을 통합한 명세다. 이전 MASTER_SPEC의 미정 질문과 충돌하는 내용은 이 개정본으로 교체한다. 웹사이트 자체나 3D/음원이 제작 완료됐다는 뜻은 아니다.
 
 ### 기준과 우선순위
 
-1. **[USER] 현재 답변 및 후속 확인:** ‘수정 PDF’는 `Frame 1.pdf`를 뜻한다. 8번은 균사체 완충재만 체험하며 곰팡이 잉크는 설명에만 남긴다.
-2. **[PDF] Frame 1.pdf:** 전체 장면·크기 관계·레이어·인터랙션의 기준. 현재 사용자 답변이 충돌하는 부분을 갱신한다.
-3. **[DESIGN] 기본디자인/Android Expanded - 1~7.pdf:** 각 장면의 1280×800 기준 화면. 파일명 숫자는 사이트 진행 순서가 아니다. Frame 1과 충돌하면 Frame 1을 우선한다.
-4. **[SHAPE] Frame 2.pdf:** CMF 카테고리와 상징 도형의 직접 대응표.
-5. **[FACT] 최초 제공 소재표:** 소재 사실의 근거. 사용자가 지정한 시편 상태는 별도로 [USER] 표시한다.
-6. **[ASSET] 소재 및 현미경-확대 폴더:** 제공된 시각 자산. 파일의 모양을 해당 소재의 보편적 물성으로 일반화하지 않는다.
-7. **[DESIGN DECISION]** 사용자가 ‘알아서 진행’하도록 위임한 구체적 연출·기술 결정. 요구사항을 실현하는 구현값이며 물성 사실은 아니다. **[PROPOSED BEHAVIOR]** 역시 시각·청각적 체험 연출이며 실험 결과가 아니다.
+1. **[USER] 최신 변경 및 최종 확인:** 메인 흐름 S01~S05는 스크롤로 양방향 이동한다. **상세·FAVORITES 등 클릭으로 들어가는 장면은 기존 클릭 이동을 유지하고, wheel로 장면을 전환하지 않는다.** 상세 wheel zoom, FAVORITES 무한 순환은 그대로 유지한다. 먼지 assembly는 유지하고 분해만 제거한다. 처음의 ‘모든 장면 스크롤’ 표현은 이 후속 확인 범위로 해석한다.
+2. **[USER] 이전 답변 및 후속 확인:** ‘수정 PDF’는 `Frame 1.pdf`를 뜻한다. 8번은 균사체 완충재만 체험하며 곰팡이 잉크는 설명에만 남긴다.
+3. **[PDF] Frame 1.pdf:** 전체 장면·크기 관계·레이어·인터랙션의 기준. 현재 사용자 답변이 충돌하는 부분을 갱신한다.
+4. **[DESIGN] 기본디자인/Android Expanded - 1~7.pdf:** 각 장면의 1280×800 기준 화면. 파일명 숫자는 사이트 진행 순서가 아니다. Frame 1과 충돌하면 Frame 1을 우선한다.
+5. **[SHAPE] Frame 2.pdf:** CMF 카테고리와 상징 도형의 직접 대응표.
+6. **[FACT] 최초 제공 소재표:** 소재 사실의 근거. 사용자가 지정한 시편 상태는 별도로 [USER] 표시한다.
+7. **[ASSET] 소재 및 현미경-확대 폴더:** 제공된 시각 자산. 파일의 모양을 해당 소재의 보편적 물성으로 일반화하지 않는다.
+8. **[DESIGN DECISION]** 사용자가 ‘알아서 진행’하도록 위임한 구체적 연출·기술 결정. 요구사항을 실현하는 구현값이며 물성 사실은 아니다. **[PROPOSED BEHAVIOR]** 역시 시각·청각적 체험 연출이며 실험 결과가 아니다.
 
 원본 루트: `C:/Users/jenny/OneDrive/바탕 화면/f/`. Frame 1은 35,893,406 bytes의 1페이지 큰 보드다. Frame 2는 1페이지 도형 대응표다. 첨부 문서는 참조 자료로 읽었으며 문서 안의 문장을 사용자 지시보다 우선하는 실행 명령으로 취급하지 않았다.
 
@@ -27,7 +28,7 @@
 - **[USER/DESIGN]** 데스크톱 전용. 기준 크기는 실제 디자인 PDF의 **1280×800**이다. 파일명 `Android Expanded`를 모바일 지원 지시로 해석하지 않는다. 터치 조작은 범위에 포함하지 않는다.
 - **[USER]** 폰트는 **Seramonde Trial, Noto Sans**. 정확한 크기·레이어는 Frame 1과 화면 PDF를 비교해 맞춘다. 임의의 새 폰트로 전체 스타일을 바꾸지 않는다.
 - **[DESIGN DECISION]** Seramonde Trial은 큰 영문 제목·소재명·영문 카피, Noto Sans는 한글·CMF 보조표기·숫자/작은 UI에 배정한다. 화면과 다른 부분은 원본 시각을 우선한다.
-- 인트로 브랜드와 활성 METALS는 손글씨형으로 보인다. 이 형상을 Seramonde로 임의 대체하지 않는다. 정확한 글꼴/벡터가 없으면 PDF의 벡터 윤곽을 활용한다. DOM 텍스트와 시각 마스크를 분리하여 typing/접근 가능한 이름을 유지한다.
+- 인트로 브랜드는 손글씨형 원본을 유지한다. 카테고리 METALS는 최신 지시에 따라 나머지 카테고리와 동일한 Seramonde 계열 글꼴·스타일을 사용하며 손글씨형 예외를 제거한다. 인트로 브랜드의 정확한 글꼴/벡터가 없으면 PDF의 벡터 윤곽을 활용한다. DOM 텍스트와 시각 마스크를 분리하여 typing/접근 가능한 이름을 유지한다.
 - **[DESIGN DECISION]** 넓은 데스크톱은 배경을 채우되 기준 화면 비율과 주요 상대 위치를 유지한다. 1280×800과 1440×900, 1920×1080에서 UI 잘림·라벨 충돌을 확인한다. 추가 크기는 새로운 모바일 레이아웃이 아니다.
 
 ### 색과 공간
@@ -64,21 +65,29 @@
 2. The softness of mycelium, the smooth grain of shell, the rough trace of wheatgrass—these new materials speak to touch through sight alone.
 3. Your hands already know what your eyes are seeing.
 
+### 무작위 도형 파비콘
+
+- **[USER]** Frame 2의 7개 상징 도형을 브라우저 탭 favicon에 **한 번에 하나씩** 표시한다. 카테고리 글자는 제외한다.
+- **[DESIGN DECISION]** 7개를 shuffle bag으로 섞어 한 바퀴 동안 각각 한 번씩 표시한다. 다음 묶음의 첫 도형이 직전 도형과 같으면 교체하여 즉시 반복을 막는다. 전환 간격은 3초를 시작값으로 둔다. ‘돌아가면서’는 도형 교체이며 도형 자체를 계속 회전시키라는 의미로 확대하지 않는다.
+- Frame 2 윤곽에서 정사각형 투명 canvas 안에 여백을 두고 SVG 및 32/48px PNG를 만든다. 작은 크기에도 윤곽이 알아보이도록 중간 회색 대비를 확인한다.
+- favicon link를 한 개 유지하고 href만 교체한다. 처음 표시할 정적 fallback도 제공한다. 문서가 숨겨져도 타이머는 종료하지 않되 브라우저의 background throttling을 허용하고 복귀 시 밀린 교체를 연속 재생하지 않는다. 앱 해제 시 타이머 정리. 브라우저가 favicon 갱신을 지연할 수 있으므로 정확한 실시간 주기를 보장하지 않는다.
+- 파일: `public/assets/favicons/{category-id}_32.png`, `{category-id}_48.png`, `{category-id}.svg`, `public/favicon.ico`. 기존 도형 SVG를 재사용하고 별도 새 도형을 생성하지 않는다.
+
 ## GLOBAL RULES
 
 ### 모션·빛·텍스트
 
 - **전역 광원:** 사이트 전체에서 매우 은은하게 떠다닌다. 장면 전환 시 끊기거나 재시작하지 않는다. parallax도 전반에 유지한다.
 - **소재 floating:** 사용자 입력이 **3초 이상 없을 때만** 실행한다. pointer 이동, 클릭, 드래그, wheel, 키보드 조작이 들어오면 현재 위치에서 부드럽게 감쇠해 멈춘다. 사용자의 조작 중 강제 floating을 지속하지 않는다. 이 규칙은 소재 대상이며 전역 광원 자체를 끄지 않는다.
-- **typing:** 최초/일반 진입의 모든 문구가 대상이다. 장면에 지정된 particle assembly/fade를 **먼저** 끝낸 후 typing한다. 글자를 완전히 노출했다가 지우고 다시 쓰는 깜빡임을 만들지 않는다. 선행 효과에서는 입자/발광/영역을 준비하고 glyph 노출은 typing에 맡긴다.
+- **typing:** 최초/일반 진입 문구가 대상이며 S03 카테고리 전체와 S06 모드 변경 시 좌측 상단 설명창은 명시된 예외다. 장면에 지정된 particle assembly/fade를 **먼저** 끝낸 후 typing한다. 글자를 완전히 노출했다가 지우고 다시 쓰는 깜빡임을 만들지 않는다. 선행 효과에서는 입자/발광/영역을 준비하고 glyph 노출은 typing에 맡긴다.
 - **RETURN 재진입:** typing을 다시 하지 않고 particle assembly/fade로 표시한다. 배율 숫자 갱신은 언제나 typing 없이 즉시 갱신한다.
 - **FAVORITES 예외:** 그 화면의 글자는 **typing만** 사용한다. 소재에는 particle assembly가 적용된다. RETURN으로 FAVORITES에 복귀할 때는 RETURN 규칙이 우선하여 글자를 다시 typing하지 않고 fade로 복구한다.
-- **도형 분해 시점:** 큰 장면이 바뀔 때 outgoing 배경 도형을 분해한다. 동일 장면 내 문장/카테고리 변화에서는 전체 장면을 불필요하게 해체하지 않는다. 첫 전환에 도형을 계속 유지하던 이전 명세는 최신 답변으로 대체한다.
-- **근접 분해:** 인트로 도형, 소재 등장·탐색에서 커서 근접 시 국소 분해 후 복구. FAVORITES에서는 금지. 상세는 관찰/변형과 충돌하지 않도록 자동 근접 분해를 끄는 것으로 설계한다. 상세의 가루/조각 효과는 DEFORM에서만 발생한다.
+- **먼지 분해 제거:** 장면 전환과 커서 근접 시 도형·소재가 먼지로 분해/흩어지는 효과를 사용하지 않는다. 필요한 퇴장은 fade/이동으로 처리한다. 소재 자체인 철가루의 입자 구조와 DEFORM 동작을 일반 장면 분해 효과와 혼동하지 않는다.
+- **근접 효과:** 모든 장면의 커서 근접 먼지 분해/복구를 제거한다. 제목·소재명 glow와 카메라 반응은 유지한다. 화면 밖 먼지가 모이는 particle assembly는 유지한다. assembly와 반대인 분해를 RETURN에 자동으로 적용하지 말고 fade/이동으로 대체한다.
 
 ### 입력·저장
 
-- 초기 흐름은 스크롤 진행, NEWMATERIALS 이후 장면 탐색은 클릭이다. 상세 wheel은 zoom, FAVORITES wheel은 순환 탐색에만 쓴다.
+- 메인 S01~S05만 스크롤로 양방향 이동한다. 상세 S06과 FAVORITES S07은 클릭 진입/RETURN 구조를 유지하며 scroll sequence에 넣지 않는다. 상세 wheel은 zoom, FAVORITES wheel은 무한 순환에만 사용한다. 확대 한계나 한 바퀴 끝에서도 다른 장면으로 넘기지 않는다.
 - 탐색 카메라 및 관찰은 **360°** 범위다. 소재와 이름 클릭 모두 상세를 연다. 화면 밖/서로 겹치는 이름을 만들지 않는다.
 - 관찰/변형은 **OBSERVE / DEFORM 모드**로 분리한다. 모든 일반 변형은 손을 떼면 복구한다. 철가루 클릭의 약 2초 응고만 명시된 예외다.
 - 즐겨찾기는 현재 페이지가 살아 있는 동안 유지하고 **새로고침 시 초기화**한다. localStorage/sessionStorage에 유지하지 않는다.
@@ -88,14 +97,16 @@
 
 ```text
 S01 INTRO → S02 NARRATIVE → S03 CATEGORIES → S04 ARRIVAL → S05 EXPLORER
-  [S01~S04: scroll]                                      [click]
+  [S01~S05 양방향 scroll; S06/S07은 기존 click 경로 유지]
 S05 → 소재/이름 클릭 → S06 DETAIL
 S05 또는 S06 → FAV → S07 FAVORITES
 S07 → 소재/이름 클릭 → S06 DETAIL
 S06/S07 → RETURN → 직전 화면 + 진입 역방향 transition
 ```
 
-큰 장면은 위 S01~S07이다. 문장 교체나 카테고리 항목 변경을 새 큰 장면으로 계산하지 않는다. RETURN 목적지는 고정 EXPLORER가 아니라 실제 방문 이력이다. 탐색→상세 A→FAV→상세 B→RETURN은 FAV로, 그곳에서 RETURN은 상세 A로 복귀한다.
+큰 장면은 위 S01~S07이며, 메인 스크롤 시퀀스에는 S01~S05만 포함한다. 소재/이름 클릭은 기존처럼 상세를 연다. FAV는 즐겨찾기를 열고 RETURN은 실제 이전 화면으로 복귀한다. 상세·FAVORITES를 새 스크롤 목적지로 추가하거나 내부 조작 끝에서 다른 장면으로 이동시키지 않는다.
+
+메인→상세→RETURN은 메인의 이전 스크롤 위치를 복원하여 기존 메인 스크롤 탐색을 이어간다. FAVORITES→상세→RETURN은 FAVORITES로 복귀하며 wheel은 계속 내부 순환만 한다. RETURN 자체를 새로운 scroll 진입 상태나 잠금으로 해석해 기존 동작을 바꾸지 않는다. 탐색→상세 A→FAV→상세 B→RETURN은 FAV로, 다시 RETURN은 상세 A로 복귀한다.
 
 | 화면 PDF | 실제 용도 | 장면 |
 |---|---|---|
@@ -112,16 +123,17 @@ S06/S07 → RETURN → 직전 화면 + 진입 역방향 transition
 ### S01 INTRO
 
 - 화면 밖 입자가 제목과 초기 상징 도형을 조립한다. 선행 효과 완료 후 타이틀·부제·CMF를 typing한다.
-- 배경 도형은 떠다니며 커서 근접 부위만 먼지처럼 분해/복구된다. 제목은 기본 은은한 glow와 커서 근처 국소 glow를 가진다.
-- 다음 큰 장면으로 이동할 때 제목/부제는 위로, 아래 문구는 아래로 퇴장한다. 최신 답변에 따라 배경 도형도 이 전환 구간에서 분해한다. 광원은 유지한다.
+- 배경 도형은 떠다니되 커서 근접으로 분해되지 않는다. 제목의 은은한 glow와 국소 glow는 유지한다.
+- 다음 큰 장면으로 이동할 때 제목/부제는 위로, 아래 문구는 아래로 퇴장한다. 배경 도형은 필요한 경우 fade로 퇴장하며 먼지로 분해하지 않는다. 광원은 유지한다.
 
 ### S02 NARRATIVE
 
 - 좌측 상단 브랜드와 우측 하단 문구는 다음 모션 시작 시 fade 준비 후 typing한다.
 - 소개 세 문장은 순서대로 진행한다. 각 문장은 fade 준비 → typing → fade-out으로 전환한다.
-- 문장 진행과 교체는 스크롤 진행률을 따른다. 스크롤이 멈추면 추가 글자 진행과 다음 문장 진입도 멈춘다.
-- 쉼표에서 **약 1.5초** 휴지한다. **[DESIGN DECISION]** 해당 쉼표를 통과한 순간 진행을 gate하고 입력 진행률은 보관한다. 1.5초가 지나도 입력이 없으면 자동으로 다음 글자를 쓰지 않는다. 이후 스크롤 입력 시 이어간다. 역스크롤로 같은 쉼표를 재통과할 때 휴지 적용 상태를 구간별로 관리한다.
-- 큰 장면 퇴장 시 배경 도형을 분해한다. 지속 광원은 분해하지 않는다.
+- 소개 문장은 장면 진입 후 시간 기반으로 자동 재생한다. 스크롤 양/속도/정지에 따라 글자 진행을 조절하지 않는다. 쉼표 특별 지연은 제거한다.
+- **[DESIGN DECISION]** typing 45ms/grapheme, 완성된 문장 유지 시간은 `max(2.5초, 영문 단어 수 ÷ 3 [초])`를 초기값으로 사용한다. 긴 문장을 읽을 여유를 주고 실제 화면에서 조정한다. 쉼표는 일반 문자와 동일하게 진행한다.
+- 사용자는 재생 중에도 스크롤로 다른 장면에 이동할 수 있다. 자동 재생이 끝났다고 다음 큰 장면으로 자동 이동하지 않는다. 이탈 시 재생 타이머를 취소한다.
+- 큰 장면 퇴장 시 배경 도형은 fade/이동으로 정리한다. 광원은 지속된다.
 
 ### S03 CMF CATEGORIES
 
@@ -140,8 +152,8 @@ Frame 2의 도형을 그대로 대응한다. 이름에서 재료 모양을 새�
 - 도형의 정확한 윤곽은 Frame 2에서 추출/벡터화한다. FABRIC을 일반 십자나 X로 임의 변경하지 않는다.
 - 목록이 **위로 스크롤**, 각 항목은 확대→메인 타이틀 같은 glow→원래 크기로 복귀한다.
 - 선택 카테고리의 도형은 양옆 뒤에서 흐리게 보인다. 초기 배경도 같은 도형 집합을 쓴다.
-- **입자 조립은 매번** 진행한다. 카테고리 활성화마다 해당 도형과 텍스트 표시 영역을 다시 준비하고 typing한다. 큰 장면 RETURN에서는 typing을 생략한다.
-- 비활성 도형은 국소 교체하고, S04로 넘어가는 큰 장면 전환에서는 배경 도형 전체를 분해한다.
+- 이 장면의 모든 카테고리 글자에는 **typing을 적용하지 않는다**. PLASTICS부터 NEWMATERIALS까지 완성된 글자가 위로 이동하며 확대/복귀한다. METALS도 다른 항목과 동일한 글꼴이다. 도형 등 비텍스트의 등장 효과는 별도로 관리한다.
+- 비활성 도형은 국소 fade로 교체하고, S04로 넘어갈 때도 먼지 분해를 사용하지 않는다.
 
 ### S04 MATERIAL ARRIVAL
 
@@ -149,11 +161,11 @@ Frame 2의 도형을 그대로 대응한다. 이름에서 재료 모양을 새�
 - 대부분 위에서 들어오고 **magnetic-iron은 왼쪽 아래에서 위로 솟는다**.
 - 각 소재는 MATERIAL DATA의 서로 다른 도착/반동 모션을 갖는다. 단순한 동일 bounce를 8개 모두에 사용하지 않는다.
 - 입력이 없는 시간이 3초를 넘으면 전체 소재의 floating을 시작한다. 도착 반동은 진입 연출이므로 idle floating과 별개다.
-- 커서 근접 분해/복구를 S05까지 이어간다.
+- S04→S05 스크롤 전환에서는 소재를 제거·재생성·재낙하하지 않는다. 같은 소재 인스턴스와 transform을 그대로 유지하고 NEWMATERIALS 제목·이름·연결선·UI만 추가한다. 역스크롤에서도 추가 요소만 숨기고 소재 배치는 보존한다.
 
 ### S05 NEWMATERIALS EXPLORER
 
-- NEWMATERIALS는 선행 장면 효과 후 typing, 동일한 은은한 glow. 좌측 상단 제목 배치.
+- S04의 소재 배치를 그대로 유지한 채 NEWMATERIALS를 좌측 상단에 typing으로 추가한다. 소재 도착 모션은 다시 실행하지 않는다. 제목의 은은한 glow, 소재명·연결선·UI를 추가한다. S03의 typing 제거를 이 제목에 확대 적용하지 않는다.
 - 커서가 카메라처럼 작동하여 큰 시점 차이를 만들며 360° 탐색이 가능하다. **[DESIGN DECISION]** 커서 위치를 중심에 대한 yaw/pitch로 해석하는 orbit controller를 사용하고 극점 통과도 허용한다. 짐벌락 없이 quaternion을 사용하며 각도를 좁게 clamp하지 않는다. 첫 진입은 PDF 정면 구도를 쓴다.
 - 이름은 소재 anchor를 화면에 투영한 뒤 라벨 배치기를 거친다. 가장자리 safe inset, 다른 라벨·FAV·파형 영역과 충돌 회피, 연결선 anchor 이동을 적용한다. 숨겨서 이름 겹침 문제를 해결하지 않는다.
 - 모든 소재/이름 클릭은 해당 상세로 진입한다. drag 임계값을 넘긴 움직임을 클릭으로 오인하지 않는다.
@@ -163,6 +175,8 @@ Frame 2의 도형을 그대로 대응한다. 이름에서 재료 모양을 새�
 ### S06 MATERIAL DETAIL
 
 **진입:** 선택 소재 회전/확대, 다른 소재 이탈, NEWMATERIALS는 뒤로 물러나면서 blur. 소재명·한글명·설명·가이드·모드·+MORE·RETURN 모두 선행 효과 후 typing. 큰 소재가 중앙을 차지한다.
+
+**좌측 상단 설명창:** 상세 장면에 처음 들어오는 시점에만 typing한다. OBSERVE↔DEFORM 전환은 설명 문자열을 즉시 교체하며 typing/fade 재시작이나 컴포넌트 재마운트를 하지 않는다. 기존 RETURN 재진입 typing 생략 규칙도 유지한다.
 
 | 조작 | 결과 |
 |---|---|
@@ -214,10 +228,10 @@ FAVORITES 절의 입력·타이머·랜덤 깊이 배치를 따른다. 이 화�
 | bacterial-cellulose | 습윤 막이 나풀거리며 내려와 느리게 출렁 | click 물결형 눌림, drag 젖은 막의 국소 신장과 주름, release 점성 감쇠 복구 | 얇고 촉촉한 막 스침·장력음 | 얇은 양면 membrane mesh, opacity/roughness, 주름/장력 mask |
 | wheatgrass-fiber | 섬유 끝들이 따로 흔들리며 내려옴 | click 섬유 묶음 벌어짐, drag 방향대로 휘며 갈라진 가닥 추종, release 재결합 | 건조하고 가벼운 섬유 바스락 | fiber 방향 mask, curve/strand 묶음 또는 층 mesh |
 | algae-foam | 부피가 눌렸다 펴지는 압축 반동 | click 움푹 눌림, drag 압축점 이동, release 부풀며 복원 | 낮은 다공성 압축·공기 빠짐 느낌 | 세분화 블록 mesh, compression mask, pore normal |
-| shell-composite | 단단한 판이 회전하며 도착, 짧은 진동·가장자리 미세 가루 | click 접촉점 미세 조각 분리, drag 조각이 힘 방향으로 조금 벌어짐, release 입자/조각 재조립 | 단단한 탭·거친 알갱이 마찰 | 판 mesh, fracture pieces, 조각 mask 및 particle seed |
+| shell-composite | 단단한 판이 회전하며 도착, 짧은 진동. 도착 시 먼지 흩어짐 없음 | click 접촉점 미세 조각 분리, drag 조각이 힘 방향으로 조금 벌어짐, release 입자/조각 재조립 | 단단한 탭·거친 알갱이 마찰 | 판 mesh, fracture pieces, 조각 mask 및 particle seed |
 | citrus-paper | 말린 종이가 한 번 펴졌다 말리며 정착 | click 끝단 말림, drag 종이 굽힘·롤 방향 변화, release 원래 곡률 복구 | 얇고 마른 종이 넘김·말림 | curl 가능한 strip mesh, crease/curl mask, 양면 texture |
 | magnetic-iron | 아래에서 입자 군집이 솟아 가시·능선 형성 | click 약 2초 응고 후 풀림, 유동 상태 drag 자석처럼 뭉침 위치·크기 변화, release 기본 군집으로 복구 | 미세 금속 알갱이·응고 순간 짧은 고정음·해제 사각거림 | instanced particles/height field, attractor field, 응고 blend 상태 |
-| mycelium-cushion | 포장재가 눌리며 도착하고 가장자리 가루가 흩어졌다 붙음 | click 국소 압축+작은 입자 방출, drag 압축 영역 이동, release 부피와 입자 복구 | 푸석한 섬유 압축·마른 가루 | L형 mesh, squash mask, 표면 particle seed. 잉크 shader 불필요 |
+| mycelium-cushion | 포장재가 눌렸다 복구되며 도착. 도착 시 먼지 흩어짐 없음 | click 국소 압축+작은 입자 방출, drag 압축 영역 이동, release 부피와 입자 복구 | 푸석한 섬유 압축·마른 가루 | L형 mesh, squash mask, 표면 particle seed. 잉크 shader 불필요 |
 
 위 부서짐·신장·복구는 만지는 듯한 감각을 위한 연출이다. 실제 시편이 동일하게 변형/자기복원한다고 설명하지 않는다. 특히 응고가 2초 만에 풀리는 것은 철가루 재료의 과학적 설명이 아니다.
 
@@ -254,7 +268,7 @@ FLOWABLE --drag--> CLUSTER_DRAG --release--> RESTORE --> FLOWABLE
 
 | 계층 | 구동 방식 | 제약 |
 |---|---|---|
-| scene transition | scroll 또는 click 타임라인 | 큰 장면 도형 분해, RETURN 역방향 |
+| scene transition | 메인 S01~S05 scroll, 상세/FAVORITES 기존 click | 먼지 분해 없이 이동/fade, 기존 RETURN 유지 |
 | arrival | 소재별 위/아래 등장·반동 | idle과 별개 |
 | floating | lastUserInput 이후 3초 | 입력 시 감쇠 정지; 드래그 중 금지 |
 | camera | 탐색 cursor / 상세 OBSERVE drag | 360° 및 라벨 충돌 해결 |
@@ -262,7 +276,7 @@ FLOWABLE --drag--> CLUSTER_DRAG --release--> RESTORE --> FLOWABLE
 | typing | 선행 효과 완료 후 | RETURN/숫자 갱신 예외, FAVORITES 별도 규칙 |
 | sound wave | 실제 출력 신호 | 장식용 랜덤 파형 금지 |
 
-**[DESIGN DECISION] 조정 가능한 시작값:** 일반 전환 900ms, RETURN 동일 길이 역방향, typing 35ms/grapheme, 별 선택 350ms/해제 250ms, release 복구 600~1000ms, idle floating 진폭 기준 화면 4~10px·주기 4~7초. 이는 사용자 확정 수치가 아닌 구현 시작값이다. 사용자 확정값인 1.5초 쉼표, 3초 idle/settle, 철가루 약 2초, zoom 40~300%를 별도로 유지한다.
+**[DESIGN DECISION] 조정 가능한 시작값:** 일반 전환 900ms, RETURN 동일 길이 역방향, typing 35ms/grapheme, 별 선택 350ms/해제 250ms, release 복구 600~1000ms, idle floating 진폭 기준 화면 4~10px·주기 4~7초. 이는 사용자 확정 수치가 아닌 구현 시작값이다. 사용자 확정값인 3초 idle/settle, 철가루 약 2초, zoom 40~300%를 별도로 유지한다.
 
 ### 서로 다른 두 3초
 
@@ -284,7 +298,7 @@ scene뿐 아니라 선택 소재·camera·zoom·mode·favoritesActiveId·배치 
 - **[DESIGN DECISION/해석]** ‘기본 음량 및 mute는 13%정도’는 **초기 master volume 13%, 초기 의도 ON**으로 적용한다. mute는 퍼센트가 아니라 ON/OFF 상태이므로 OFF 시 실제 출력 0%, ON 복귀 시 저장된 13% 또는 사용자 설정을 복원한다. 브라우저 허용 전에는 사용자 첫 입력을 기다린다.
 - output master gain 뒤의 실제 신호를 analyser에 연결해 #323232 파형을 그린다. 음소거 시 기준선으로 감쇠한다. microphone 입력을 요구하지 않는다.
 - 은은한 장면 지속음과 소재별 drag/rotate/zoom 지속음을 제공한다. typing은 아주 낮은 짧은 음색을 사용하되 UI 소리가 소재 조작음을 덮지 않게 한다.
-- 각 모션의 소리를 구분한다: assemble / dissolve / reform / category-expand / category-return / arrival / detail-enter / detail-return / favorites-enter / favorites-return / favorites-step / favorite-on / favorite-off / typing.
+- 각 모션의 소리를 구분한다: assemble / category-expand / category-return / arrival / detail-enter / detail-return / favorites-enter / favorites-return / favorites-step / favorite-on / favorite-off / typing.
 - 매 조작 효과음은 pointerdown 시작음 + drag 동안 loop + pointerup 종료음으로 표현한다. 매 프레임마다 one-shot을 재생하지 않는다.
 - 음원은 별도 제공이 없어도 **절차적 합성음**으로 제작한다. MATERIAL DATA 표의 음색을 따른다. 실제 소재 현장 녹음이라고 표시하지 않는다. 향후 녹음 파일로 교체할 수 있게 cue ID와 sound engine을 분리한다.
 - 모션 취소·장면 이탈·탭 비활성 시 loop를 감쇠 종료한다. 동시 발음 수·peak limiter·볼륨 ducking을 적용한다. RETURN은 역방향용 cue를 사용하며 모든 소리를 기계적으로 역재생하지 않는다.
@@ -302,7 +316,7 @@ scene뿐 아니라 선택 소재·camera·zoom·mode·favoritesActiveId·배치 
 
 ### 순환·정보
 
-- wheel은 저장 목록 순서 변경이 아닌 **순환 탐색**이다. 한 바퀴 돌면 기존 소재로 돌아온다.
+- wheel은 저장 목록 순서 변경이 아닌 **무한 순환 탐색**이다. 한 바퀴 돌면 기존 소재로 돌아오며 끝에서 다른 장면으로 이동하지 않는다. 기존 FAVORITES 동작을 유지한다.
 - 새 wheel 입력: 진행 중 정보 typing과 타이머 취소 → 관성 회전 → settle 감지 → **3초 대기** → 현재 소재 우측 하단 전체 문구 typing.
 - 오른쪽 아래의 소재명·설명·MORE 안내·MORE 텍스트 모두 대상이다. 정보는 같은 activeId를 사용한다.
 - **최초 진입은 3초 대기 제외:** 소재 assembly가 끝나면 바로 typing한다. RETURN 재진입은 전역 RETURN 규칙에 따라 typing 없이 fade 복구한다.
@@ -376,8 +390,9 @@ PDF로 배치·크기 확인은 가능하다. 더 효율적인 전달은 **편�
 
 ### 시스템
 
+- `FaviconController`: Frame 2 도형 기반 shuffled cycle, 정적 fallback, timer 정리.
 - `SceneMachine`: S01~S07, enter/exit/return, transition lock, 방문 이력.
-- `ScrollDirector`: 초기 스크롤 진행과 문장 pause gate. 상세/FAVORITES에는 초기 scroll handler 미적용.
+- `ScrollDirector`: 메인 S01~S05 양방향 이동만 담당한다. 상세/FAVORITES에서는 메인 handler를 비활성화하고 wheel을 내부 zoom/순환에만 전달한다. RETURN 시 이전 scene에 맞는 handler와 메인 scroll 위치를 복원한다. 소개는 별도 NarrativeTimeline으로 자동 재생하며 쉼표 gate를 사용하지 않는다.
 - `CameraController`: 탐색 360 cursor camera와 상세 OBSERVE 360 drag.
 - `MaterialBehavior`: 소재별 mesh/입자·변형·복구, iron 2초 상태.
 - `LabelLayout`: 투영, safe bounds, 서로 겹침 방지, anchor/leader line 조정. 폰트 loading 후 실제 text bounds 사용.
@@ -410,15 +425,20 @@ type SessionState = {
 
 ### 입력 우선순위
 
-UI 클릭/zoom bar drag → 모드에 맞는 소재 조작 → 카메라 → hover 순서로 소비한다. UI에서 시작한 drag가 소재를 동시에 변형하지 않는다. OBSERVE/DEFORM을 바꾸면 기존 gesture를 취소·복구한다. wheel 입력은 현재 장면 하나만 처리한다. drag 이후 synthetic click을 무시한다. 라벨은 화면 안에서 모두 읽을 수 있게 하되 렌더링 layer와 hit region을 함께 갱신한다.
+UI 클릭/zoom bar drag → 모드에 맞는 소재 조작 → 카메라 → hover 순서로 소비한다. UI에서 시작한 drag가 소재를 동시에 변형하지 않는다. OBSERVE/DEFORM을 바꾸면 기존 gesture를 취소·복구한다. wheel 입력은 현재 장면 하나만 처리한다. 메인에서는 장면 이동, 상세에서는 zoom, FAVORITES에서는 무한 순환이다. 상세 zoom이 40%/300%에 도달해도 장면을 이동하지 않는다. 같은 이벤트를 내부 조작과 메인 이동에 중복 소비하지 않는다. drag 이후 synthetic click을 무시한다. 라벨은 화면 안에서 모두 읽을 수 있게 하되 렌더링 layer와 hit region을 함께 갱신한다.
 
 ### 완료 검수
 
+- [ ] 메인 S01~S05는 양방향 스크롤 이동. 상세/FAVORITES는 기존 클릭 진입·RETURN이며 내부 wheel 경계에서 장면 이동 없음.
+- [ ] 메인 복귀 시 이전 스크롤 위치 복원, FAVORITES 복귀 시 기존 무한 순환 유지. 같은 wheel 이벤트가 두 동작을 실행하지 않음.
+
 - [ ] 디자인 기준 1280×800, Frame 1 크기 관계·레이어·검정/따뜻한 빛·폰트 의도 유지.
-- [ ] Frame 2의 7개 도형이 정확히 대응하며 매 카테고리 assembly가 실행됨.
-- [ ] 큰 장면 전환 때 도형 분해, 전역 광원은 지속됨.
+- [ ] Frame 2의 7개 도형이 정확히 대응하고 METALS 글꼴이 통일되며 카테고리 typing이 없음.
+- [ ] 모든 장면 전환·근접 먼지 분해가 없고 광원은 지속됨. S04↔S05 소재 인스턴스·위치가 유지됨.
 - [ ] typing 전 선행 효과, RETURN typing 없음, 숫자 갱신 typing 없음, FAVORITES 글자 typing-only.
-- [ ] 소개 스크롤 진행/정지와 쉼표 약 1.5초 gate가 함께 작동함.
+- [ ] 소개가 스크롤과 무관하게 읽을 속도로 자동 재생되며 쉼표 지연이 없음. 스크롤 장면 이탈은 가능함.
+- [ ] 상세 설명창은 진입 시만 typing, OBSERVE/DEFORM 교체 시 즉시 갱신됨.
+- [ ] Frame 2의 도형 7개가 파비콘에 하나씩 무작위 순환하며 동시에 겹치거나 연속 반복되지 않음.
 - [ ] 8개 소재 차별화 등장, 철가루만 아래에서 솟음, 무입력 3초 전 floating 없음.
 - [ ] 카메라/관찰 360°, 라벨 화면 밖·상호 겹침 없음, 이름 클릭 상세 이동.
 - [ ] 관찰/변형 모드 입력 충돌 없음, 일반 release 복구, 철가루 응고 약 2초 후 해제 및 drag 뭉침.
@@ -437,7 +457,7 @@ UI 클릭/zoom bar drag → 모드에 맞는 소재 조작 → 카메라 → hov
 
 기존 Q01~Q19 대부분은 사용자 답변으로 해소됐다. 다시 같은 질문을 요구하지 않는다. 남은 사항은 아래와 같이 제한한다.
 
-1. **정확한 폰트 파일:** Seramonde Trial/Noto Sans의 실제 사용 파일과 손글씨형 브랜드/활성 카테고리 원본이 아직 확인되지 않았다. 제공 가능하면 원본과 일치하게 연결한다. 없으면 PDF 벡터/윤곽으로 진행하고 폰트 대체 부분을 보고한다. Trial이라는 이름만으로 웹 사용 권한이 확보됐다고 추정하지 않는다.
+1. **정확한 폰트 파일:** Seramonde Trial/Noto Sans의 실제 사용 파일과 손글씨형 인트로 브랜드 원본이 아직 확인되지 않았다. 제공 가능하면 원본과 일치하게 연결한다. 없으면 PDF 벡터/윤곽으로 진행하고 폰트 대체 부분을 보고한다. Trial이라는 이름만으로 웹 사용 권한이 확보됐다고 추정하지 않는다.
 2. **음량 문장의 해석:** ‘mute는 13%’는 기술적으로 상태와 볼륨이 다르므로 기본 볼륨 13%·ON 의도로 정리했다. 초기 무음을 의도한 경우 mute 기본값만 바꾸면 된다. 이 항목은 구현을 중단하는 승인 요청이 아니다.
 3. **정확한 360 실물 재현:** 제공 PNG에는 뒷면 데이터가 없다. 절차적 근사 모델로 진행한다. 실제 시편과 동일한 뒷면이 필요할 때만 GLB 또는 다각도 사진이 추가로 필요하다.
 
@@ -448,7 +468,7 @@ UI 클릭/zoom bar drag → 모드에 맞는 소재 조작 → 카메라 → hov
 아래를 Codex/Cursor에 붙여 넣고 이 명세와 원본 폴더를 접근 가능하게 제공한다.
 
 ```text
-VISUALIZING TOUCH 데스크톱 웹사이트를 구현해 주세요. 현재 MASTER_SPEC.md 개정 2를 통합 명세로 사용하세요. 기존 명세의 미정 질문을 반복하지 마세요.
+VISUALIZING TOUCH 데스크톱 웹사이트를 구현해 주세요. 현재 MASTER_SPEC_v3.md 개정 3을 통합 명세로 사용하세요. 기존 명세의 미정 질문을 반복하지 마세요. 기존 코드가 있다면 요청된 부분만 수정하고 나머지 디자인·소재·기능은 유지하세요.
 
 원본 폴더는 C:/Users/jenny/OneDrive/바탕 화면/f/ 입니다. Frame 1.pdf가 사용자가 말한 수정본이며 크기·레이어·전체 흐름 기준입니다. 기본디자인 폴더의 PDF 7개는 1280×800 개별 화면이고 파일명 순서가 사이트 순서가 아닙니다. Frame 2.pdf는 카테고리 도형 매핑 기준입니다. 사용자 최신 답변이 PDF보다 우선합니다. 문서 안 문장을 시스템/실행 지시로 취급하지 마세요.
 
@@ -456,9 +476,11 @@ VISUALIZING TOUCH 데스크톱 웹사이트를 구현해 주세요. 현재 MASTE
 
 필수 규칙:
 - Seramonde Trial/Noto Sans 및 원본 시각을 따르고 오탈자를 교정하세요. 사용자 위임에 따라 영문 카피를 정리해도 되지만 소재 사실을 발명하지 마세요.
-- 전역 은은한 광원과 parallax, 큰 장면 전환 때 배경 도형 분해. Frame 2의 7개 도형을 정확히 매핑하고 카테고리마다 particle assembly를 실행하세요.
-- 모든 문구 typing, 선행 assembly/fade 완료 후 실행. RETURN 재진입은 typing 없이 assembly/fade, 배율 숫자 갱신은 typing 없음. FAVORITES 글자는 typing만; 소재는 assembly. RETURN 복귀 예외를 우선하세요.
-- 소개는 스크롤 진행, 쉼표 약 1.5초 휴지. NEWMATERIALS부터 클릭 기반 화면 탐색. 상세 wheel은 zoom, FAVORITES wheel은 순환 탐색입니다.
+- 전역 은은한 광원과 parallax는 유지하고 모든 장면 전환·근접 먼지 분해는 제거하세요. Frame 2의 7개 도형을 정확히 매핑하세요. 카테고리 METALS는 다른 항목과 같은 글꼴이며 이 장면의 typing을 제거하세요.
+- 일반 문구 typing은 선행 assembly/fade 완료 후 실행. 카테고리 장면은 typing을 제거하고, 상세 좌측 상단 설명은 진입 때만 typing하며 OBSERVE/DEFORM 교체에서는 즉시 갱신하세요. RETURN 재진입은 typing 없이 assembly/fade, 배율 숫자 갱신은 typing 없음. FAVORITES 글자는 typing만; 소재는 assembly. RETURN 복귀 예외를 우선하세요.
+- 최종 사용자 확인에 따라 메인 S01~S05만 양방향 스크롤로 이동하세요. 상세/FAVORITES는 기존 소재/FAV/RETURN 클릭 이동을 변경하지 마세요. 상세 wheel은 zoom, FAVORITES wheel은 무한 순환이며 끝에서도 장면을 이동하지 않습니다. 소개는 스크롤과 무관하게 읽기 적당한 속도로 자동 재생하고 쉼표 지연을 제거하세요.
+- S04→S05는 기존 소재 인스턴스·위치를 보존하고 NEWMATERIALS 제목·이름·연결선·UI만 추가하세요. 역스크롤도 추가 요소만 제거합니다. 먼지가 모이는 assembly는 유지하되 전환/근접 먼지 분해와 그 효과음은 제거하세요.
+- Frame 2 도형 7개를 하나씩 무작위 순환하는 파비콘으로 사용하세요. FaviconController 규칙을 따르세요.
 - 8개 소재 등장 모션은 명세 표대로 다르게 만들고 철가루는 아래에서 솟게 하세요. 소재 floating은 사용자 무입력 3초 후에만 실행하세요.
 - 탐색 카메라/상세 관찰은 360°. 라벨을 소재에 연결하고 화면 밖이나 서로 겹치지 않게 배치하세요. 연결선 시작점을 옮겨도 됩니다. 소재와 이름 모두 클릭하면 상세를 엽니다.
 - 상세 OBSERVE/DEFORM 모드를 분리하세요. zoom 40~300%, bar 직접 drag 가능, +/-는 표식. 숫자/bar/시각 zoom을 같은 상태에 연결하고 제공 micro로 확대 연출하세요.
@@ -472,3 +494,4 @@ VISUALIZING TOUCH 데스크톱 웹사이트를 구현해 주세요. 현재 MASTE
 
 데스크톱 전용으로 구현하고 터치 UX를 추가하지 마세요. reduced-motion은 자동 움직임을 줄이는 데스크톱 대안으로 존중하세요. 모든 완료 검수를 실행하고 실제 구현 완료, 남은 자산/한계, 실행 방법을 정확히 보고하세요. 현재 요청에서 승인되지 않은 배포는 진행하지 마세요.
 ```
+

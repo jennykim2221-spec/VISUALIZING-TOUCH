@@ -4,3 +4,9 @@ dist/
 tmp/
 test-results/
 playwright-report/
+.tools/
+dist/
+node_modules/
+playwright-report/
+test-results/
+tmp/
